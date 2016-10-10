@@ -1,22 +1,25 @@
-default: mach.exe palindromes.exe frugal.exe
+CC=gcc
+FLAGS=-lm
 
-mach.exe: mach.c
-	gcc $? -o $@
+default: mach palindromes frugal
 
-palindromes.exe: palindromes.c
-	gcc $? -o $@
+mach: mach.c
+	$(CC) $? -o $@ $(FLAGS)
 
-frugal.exe: frugal.c
-	gcc $? -o $@
+palindromes: palindromes.c
+	$(CC) $? -o $@ $(FLAGS)
 
-assignment2: palindromes.exe
+frugal: frugal.c
+	$(CC) $? -o $@ $(FLAGS)
+
+assignment2: palindromes
 	$?
 
-assignment4: frugal.exe
+assignment4: frugal
 	$?
 
-assignment5: mach.exe
+assignment5: mach
 	$?
 
 clean:
-	-del mach.exe palindromes.exe frugal.exe
+	-rm mach palindromes frugal
