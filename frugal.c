@@ -6,6 +6,7 @@
 #include <math.h>
 #include <stdbool.h>
 
+// Get the number of digits in a number
 int getLength(int x)
 {
   int length = 0;

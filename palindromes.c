@@ -38,7 +38,7 @@ void splitDigits(int number, int* result)
   for(i = 0;i < length;++i) result[i] = selectDigit(number, i);
 }
 
-bool isPalidrome(int n)
+bool isPalindrome(int n)
 {
   int length = getLength(n);
   int digits[length];
@@ -60,12 +60,12 @@ int main()
   int i;
   for(i = 1;i <= limit;++i)
   {
-      if(isPalidrome(i))
+      if(isPalindrome(i))
       {
         ++counter;
         sum = sum + 1.0/(double)i;
       }
-      if(i%(limit/10) == 0) printf("%d %d %f\n", i, counter, sum);
+      if(i%(limit/10) == 0) printf("%4d %4d %4.5f\n", i, counter, sum);
   }
   return 0;
 }
