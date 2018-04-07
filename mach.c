@@ -11,40 +11,34 @@
 double ACCURACY = 0.0001;
 
 // This the critical area ratio equation, g(x)
-double findCritArea(double M)
-{
+double findCritArea(double M) {
   return (1/M)*pow((2/2.4)*(1 + 0.2*M*M), 3);
 }
 
 // f(x) = g(x) - ratio
 // Solving for the roots of f(x) is equivalent to solving g(x) = ratio
-double f(double M, double ratio)
-{
+double f(double M, double ratio) {
   return findCritArea(M) - ratio;
 }
 
 // Derivative of f with respect to M
-double df(double M)
-{
+double df(double M) {
   return 0.694444*(0.2*M*M+1)*(0.2*M*M+1)-(0.578704*pow((0.2*M*M+1),3))/(M*M);
 }
 
 // abs() doesn't work on doubles, only ints
-double absolute(double x)
-{
+double absolute(double x) {
   if(x > 0) return x;
   else return -x;
 }
 
 // Calculate any root using an initial guess, and a constant value
 // 'userInputArea' is the 'ratio' variable in f(x) = g(x) - ratio
-double root(double userInputArea, double initialGuess)
-{
+double root(double userInputArea, double initialGuess) {
   double machGuess = initialGuess;
   double result = f(machGuess, userInputArea);
   double slope = df(machGuess);
-  do
-  {
+  do {
     // This method uses the Newton method for root finding
     machGuess = machGuess - result/slope;
     slope = df(machGuess);
@@ -54,8 +48,7 @@ double root(double userInputArea, double initialGuess)
   return machGuess;
 }
 
-void roots(double userInputArea)
-{
+void roots(double userInputArea) {
   double rootValue = 0.0;
   rootValue = root(userInputArea, 1);
   printf("Msupersonic= %.3f\n", rootValue);
@@ -63,8 +56,7 @@ void roots(double userInputArea)
   printf("Msubsonic= %.3f\n", rootValue);
 }
 
-int main()
-{
+int main() {
   double area = 0.0;
   printf("Please enter critical area ratio: ");
   scanf("%lf", &area);
